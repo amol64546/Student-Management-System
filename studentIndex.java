@@ -137,16 +137,22 @@ public class studentIndex extends javax.swing.JFrame implements KeyListener {
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_management","root","oooo9999");
-                String query = "select * from "+branch+" s inner join "+branch+"_result r where s.rollno="+rollno+" and r.rollno="+rollno+"";
-              
-                Statement st = con.createStatement();            
-                ResultSet rs = st.executeQuery(query);               
+                //String query = "select * from "+branch+" s inner join "+branch+"_result r where s.rollno="+rollno+" and r.rollno="+rollno+"";
+                String query = "select * from "+branch+" s where s.rollno="+rollno+"";
+                String query2 = "select * from "+branch+"_result r where r.rollno="+rollno+"";
                 
-                if(rs.next()){
-                    setVisible(false);
-                    new studentHome(String.valueOf(rollno),branch).setVisible(true);
+                //Statement st = con.createStatement();            
+                ResultSet rs = con.createStatement().executeQuery(query);               
+                ResultSet rs2 = con.createStatement().executeQuery(query2);
+                if(!rs.next()){
+                    JOptionPane.showMessageDialog(this, "Roll No does not exits");
+                }
+                else if(!rs2.next()){
+                    JOptionPane.showMessageDialog(this, "Result for this Roll No does not exits");
+                   
                 }else {
-                    JOptionPane.showMessageDialog(this, "Incorrect Roll number");
+                     setVisible(false);
+                     new studentHome(String.valueOf(rollno),branch).setVisible(true);
                 }
                 
             }

@@ -296,19 +296,30 @@ public class InsertNewResult extends javax.swing.JFrame implements KeyListener {
             int sub5 = Integer.parseInt(jTextField6.getText());
         
             try{
+                if(maths>100 || sub2>100 || sub3>100 || sub4>100 || sub5>100){
+                     JOptionPane.showMessageDialog(this,"Marks should be (Marks<=100)");
+                     return;
+                }
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_management","root","oooo9999");
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery("select * from "+branch+" where rollno="+rollno+"");
-                if(rs.next()){
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery("select * from "+branch+"_result where rollno="+rollno+"");
+                if(!rs.next()){
+                    JOptionPane.showMessageDialog(this,"Roll no does not exist");
+                }
+                else if(rs2.next()){
+                    JOptionPane.showMessageDialog(this,"Result already exit");
+                }
+                else {
                     st.executeUpdate("insert into "+branch+"_result values("+rollno+","+maths+","+sub2+","+sub3+","+sub4+","+sub5+")");
                     JOptionPane.showMessageDialog(this,"Successfully added the result");
                     setVisible(false);
                     new InsertNewResult().setVisible(true);
                 }
-                else{
-                    JOptionPane.showMessageDialog(this,"Roll no does not exist");
-                }
+                
+                
             }
             catch(Exception e){
                 JOptionPane.showMessageDialog(this,e.toString());
