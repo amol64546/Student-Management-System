@@ -1,3 +1,4 @@
+# Student-Management-System
 ![index](https://user-images.githubusercontent.com/106758417/207649353-5717817c-ced7-4b98-a631-a3ec949438ed.png)
 ![admin_index](https://user-images.githubusercontent.com/106758417/207649415-a0a5f1a9-d580-4490-8cd6-a4702e441d02.png)
 ![AddNewStudents](https://user-images.githubusercontent.com/106758417/207649430-b5094485-cf7c-4960-90c6-cd23bcfe0768.png)
