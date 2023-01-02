@@ -9,3 +9,7 @@
 - Implemented Student module and Admin module with secure login module, increasing usability
 - Learnt to work with databases, APIs and how to design user interfaces
 - Technology used: Java, Swing, MySQL, JDBC
+
+# Entity-Relationship Model
+
+![Screenshot from 2022-12-31 08-55-21](https://user-images.githubusercontent.com/106758417/210197338-f957df58-abf4-49c3-aa1c-f6b7b2e4207e.png)
